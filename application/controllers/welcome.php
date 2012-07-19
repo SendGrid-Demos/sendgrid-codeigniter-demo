@@ -19,6 +19,15 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->library('email');
+
+		$this->email->from('john.doe@example.com', 'Swift');
+		$this->email->to('jane.doe@example.com');
+		$this->email->subject('Test Email using SendGrid');
+		$this->email->message('This email was delivered by your friends at SendGrid');
+
+		$this->email->send();
+
 		$this->load->view('welcome_message');
 	}
 }
